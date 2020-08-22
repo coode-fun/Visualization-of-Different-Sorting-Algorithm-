@@ -1,0 +1,207 @@
+#include <FastLED.h>
+
+#define LED_PIN     7
+#define NUM_LEDS    150
+
+CRGB leds[NUM_LEDS];
+
+void setup() {
+
+  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
+
+}
+
+void loop() {
+
+  //setting initial inputs
+  //................................................................................................................. 
+  int i=0;
+  int t=1;
+  
+  while(i<NUM_LEDS)
+  {
+    leds[i]=CRGB::ForestGreen;
+    i++;
+  }
+  
+  t=1;
+  i=1;
+  int t2=3;
+
+  while(t<NUM_LEDS&&t2<NUM_LEDS)
+  {
+    leds[t]=CRGB::Blue;
+    leds[t2]=CRGB::Blue;
+    t=6*i+1;
+    t2=6*i-1;
+    i++;
+  }
+  
+  t=3;
+  i=2;
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::SeaGreen;
+    t=i*3;
+    i++;
+  }
+  i=1;
+  t=7;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::OrangeRed;
+    t=i*3+4*i;
+    i++;
+  }
+  i=1;
+  t=5;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Teal;
+    t=i*5+1;
+    i++;
+  }
+  i=3;
+  t=11;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Magenta;
+    t=i*i;
+    i++;
+  }
+  
+  i=3;
+  t=33;
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Yellow;
+    t=13*i;
+    i++;
+  }
+  i=1;
+  t=66;
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Tan;
+    t=i*(i+1);
+    i++;
+  }
+  FastLED.show();
+  delay(5000);
+  
+// Applying bubble sort
+ //----------------------------------------------------------------------------------------------------
+  for(int i=0;i<NUM_LEDS-1;i++)
+   for(int j=0;j<NUM_LEDS-i-1;j++)
+   {
+    if(leds[j]<leds[j+1])
+    {
+      CRGB temp=leds[j];
+           leds[j]=leds[j+1];
+           leds[j+1]=temp;
+    }
+    FastLED.show();
+   }
+delay(1000);
+/*
+/*
+  i=0;
+   t=1;
+  while(i<NUM_LEDS)
+  {
+    leds[i]=CRGB::ForestGreen;
+    i++;
+  }
+  
+  t=1;
+  i=1;
+  int   t2=3;
+  while(t<NUM_LEDS&&t2<NUM_LEDS)
+  {
+    leds[t]=CRGB::Blue;
+    leds[t2]=CRGB::Blue;
+    t=6*i+1;
+    t2=6*i-1;
+    i++;
+  }
+  /*
+  t=3;
+  i=2;
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::SeaGreen;
+    t=i*3;
+    i++;
+  }
+  */
+  i=1;
+  t=7;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::OrangeRed;
+    t=i*3+4*i;
+    i++;
+  }
+  /*
+  i=1;
+  t=5;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Teal;
+    t=i*5+1;
+    i++;
+  }
+  */
+  i=3;
+  t=11;
+  
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Magenta;
+    t=i*i;
+    i++;    
+  }
+
+  /*
+  i=3;
+  t=33;
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Yellow;
+    t=13*i;
+    i++;
+  }
+  i=1;
+  t=66;
+  */
+  while(t<NUM_LEDS)
+  {
+    leds[t]=CRGB::Red;
+    t=i*(i+1);
+    i++;
+  }
+  delay(5000);
+  FastLED.show();
+  delay(5000);
+
+// Applying Quick sort algorithm
+//--------------------------------------------------------------------------------------------------------
+//quickSort(leds, 0, NUM_LEDS - 1);
+for(int i=0;i<NUM_LEDS-1;i++)
+   for(int j=0;j<NUM_LEDS-i-1;j++)
+   {
+    if(leds[j]<leds[j+1])
+    {
+      CRGB temp=leds[j];
+           leds[j]=leds[j+1];
+           leds[j+1]=temp;
+    }
+    FastLED.show();
+   }
+delay(5000);
+}
